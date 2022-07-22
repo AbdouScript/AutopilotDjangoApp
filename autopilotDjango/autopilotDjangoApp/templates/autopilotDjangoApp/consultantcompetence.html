@@ -1,0 +1,29 @@
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% if consultantscompetences %}
+<h3 class="text-center">
+    Liste Consultants Competences
+    
+</h3>
+<table class="table table-hover table-primary table-striped table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">ID COMPETENCE</th>
+            <th scope="col">ID CONSULTANT</th>
+            <th scope="col">ID</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for ConsultantCompetence in consultantscompetences %}
+        <tr>
+            <td>{{ ConsultantCompetence.idCompetence }}</td>
+            <td>{{ ConsultantCompetence.idConsultant }}</td>
+            <td>{{ ConsultantCompetence.id}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>list_ConsultantCompetence is not available.</p>
+{% endif %}

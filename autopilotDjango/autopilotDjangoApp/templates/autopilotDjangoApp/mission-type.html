@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>Types de Missions</title>
+    </head>
+    {% load bootstrap5 %}
+    {% csrf_token %}
+    {% if Missionstype %} 
+    {% bootstrap_css %}
+    <h3 class="text-center text-primary">Liste des Types de  Missions</h3>
+<table class="table table-hover table-primary table-striped table-bordered">
+  <thead> 
+        <tr>
+            <th scope="col">id MissionType</th>
+            <th scope="col">titre</th>
+            <th scope="col">description</th>
+            {% comment %} <th scope="col">idMission</th>
+            <th scope="col">nomMission</th> {% endcomment %}
+    
+    </tr>
+        </thead>
+        <tbody>
+            {% for MissionsType in Missionstype %}
+                
+                <tr>
+                    <td> {{MissionsType.idMissionType }} <a class="btn btn-success" href="{% url 'autopilotDjangoApp:modifierMissionType' MissionsType.idMissionType %}" role="button">Modifier</a> <a class="btn btn-danger" href="http://127.0.0.1:8000/app/supprimerMissionType/" role="button">Supprimer</a></td>
+                    <td>{{MissionsType.titre}} </td>
+                    <td>{{MissionsType.description}}</td>
+                    
+                    {% comment %} <td>{% for Missions in MissionTypes.context_set.all %} </td>
+                    <td>  {{Missions.idMission}}</td>
+                    <td> {{Missions.nomMission}}</td>
+                    {% endfor %} {% endcomment %}
+                </tr>
+                 {% endfor %} 
+        </tbody>
+    </table>
+    <a class="btn btn-primary" href="http://127.0.0.1:8000/app/register-missionType/" role="button">Ajouter</a>
+
+{% else %}
+<p>La page missionType n'est pas disponible</p>
+    {% endif %}
+</html>

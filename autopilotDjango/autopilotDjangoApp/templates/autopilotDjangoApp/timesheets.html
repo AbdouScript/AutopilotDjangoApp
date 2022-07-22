@@ -1,0 +1,36 @@
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% if timesheets %}
+<h3 class="text-center">
+    Liste timesheets
+    
+</h3>
+<table class="table table-hover table-primary table-striped table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">ID TIMESHEET</th>
+            <th scope="col">ANNEE</th>
+            <th scope="col">SEMAINE</th>
+            <th scope="col">TEMPS PASSE</th>
+            <th scope="col">MISSION</th>
+            <th scope="col">CONSULTANT</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for TimeSheet in timesheets %}
+        <tr>
+            <td>{{ TimeSheet.idTimeSheet}}</td>
+            <td>{{ TimeSheet.annee }}</td>
+            <td> {{ TimeSheet.Semaine}}</td>
+            <td> {{ TimeSheet.tempsPasse}}</td>
+            <td> {{ TimeSheet.idMission}}</td>
+            <td> {{ TimeSheet.idConsultant.nom}}</td>
+          
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>list_TimeSheet est vide</p>
+{% endif %}

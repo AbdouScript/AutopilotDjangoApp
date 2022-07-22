@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title>ActivitesMissions</title>
+    </head>
+    {% load bootstrap5 %}
+    {% csrf_token %}
+    {% if activitesMissions %} 
+    {% bootstrap_css %}
+    <h3 class="text-center text-primary">Liste des Activités Missions</h3>
+<table class="table table-hover table-primary table-striped table-bordered">
+    <thead> 
+        <tr>
+            <th scope="col">Activité Type</th>
+            <th scope="col">Consultant</th>
+            <th scope="col">Missions</th>
+            <th scope="col">tjm</th>
+            <th scope="col">estimationCharge</th>
+            <th scope="col">devise</th>
+            <th scope="col">tauxChangeEur</th>
+    
+    </tr>
+        </thead>
+        <tbody>
+            {%for activiteMission in activitesMissions %}
+            <tr>
+                <td> {{activiteMission.idActivitesMissions}}<a class="btn btn-success" href="{% url 'autopilotDjangoApp:modifierActiviteMission' activiteMission.idActivitesMissions %}" role="button">Modifier</a> <a class="btn btn-danger" href="http://127.0.0.1:8000/app/supprimerActiviteMission" role="button">Supprimer</a></td>
+                <td> {{activiteMission.idConsultant }} </td>
+                <td> {{activiteMission.idMission }} </td>
+                <td>{{activiteMission.tjm}} </td>
+                <td>{{activiteMission.estimationCharge }}</td>
+                <td> {{activiteMission.devise}}</td>
+                <td> {{activiteMission.tauxChangeEur}}</td>
+            </tr>
+       
+        {% endfor %}
+        </tbody>
+    </table>
+    <a class="btn btn-primary" href="http://127.0.0.1:8000/app/register-mission/" role="button">Ajouter</a>
+
+    {% comment %} {% else %}
+    <p>La page n'est pas disponible</p> {% endcomment %}
+        {% endif %} 
+
+</html>

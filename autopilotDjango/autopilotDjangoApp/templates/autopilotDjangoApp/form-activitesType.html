@@ -1,0 +1,14 @@
+<form action="/app/register-activiteType/" method="post">
+    {% csrf_token %}
+    {%if error %} <h1> {{error}}</h1> {%endif%}
+    <!-- <label for="nom">Votre nom : </label>
+    <input id="nom" type="text" name="nom" value="{{ context.form.nom }}"><br>
+    <label for="prenom">Votre prenom : </label>
+    <input id="prenom" type="text" name="prenom" value="{{ context.form.prenom }}"><br>
+    <label for="email_user">Votre email : </label>
+    <input id="email_user" type="text" name="email_user" value="{{ context.form.email_user }}"><br>
+    <label for="password">Votre mot de passe : </label>
+    <input id="password" type="text" name="password" value="{{ context.form.password}}"><br>     -->
+    {{form}}
+    <input type="submit" value="OK">
+</form>

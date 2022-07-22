@@ -1,0 +1,34 @@
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% if missions %}
+<h3 class="text-center">
+    Liste missions
+    
+</h3>
+<table class="table table-hover table-primary table-striped table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">idMission</th>
+            <th scope="col">MissionType</th>
+            <th scope="col">startDate</th>
+            <th scope="col">endDate</th>
+            <th scope="col">nomMission</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for Mission in missions %}
+        <tr>
+            <td>{{ Mission.idMission}}<a class="btn btn-success" href="{% url 'autopilotDjangoApp:modifierMission' Mission.idMission %}" role="button">Modifier</a> <a class="btn btn-danger" href="http://127.0.0.1:8000/app/supprimerMission/" role="button">Supprimer</a></td>
+            <td>{{ Mission.idMissionType}}</td>
+            <td>{{ Mission.startDate}}</td>
+            <td>{{ Mission.endDate}}</td>
+            <td>{{ Mission.nomMission}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a class="btn btn-primary" href="http://127.0.0.1:8000/app/register-mission/" role="button">Ajouter</a>
+{% else %}
+<p>list_Mission is not available.</p>
+{% endif %}
